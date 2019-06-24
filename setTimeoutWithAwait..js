@@ -4,12 +4,6 @@ function promiseGenerator(value) {
     Promise.resolve(value).then((value) => {
         console.log(value)
     })
-
-    // let count = 1
-    // for(let i = 0; i < 6000000000; i++)
-    // {
-    //     count = count + i
-    // }
 }
 
 function one() {
@@ -20,10 +14,14 @@ function two() {
     console.log(2)
 }
 
-promiseGenerator('foo')
+async function run(){
+    promiseGenerator('foo')
 
-setTimeout(one, 0)
+    await setTimeout(one, 1000)
 
-setTimeout(two, 0)
+    setTimeout(two, 0)
 
-promiseGenerator('bar')
+    promiseGenerator('bar')
+}
+
+run()
