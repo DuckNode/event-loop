@@ -1,8 +1,8 @@
 'use strict'
 
 function promiseGenerator(value) {
-    Promise.resolve(value).then((value) => {
-        console.log(value)
+    return new Promise((resolve)=>{
+        resolve(value)
     })
 
     // let count = 1
@@ -20,10 +20,16 @@ function two() {
     console.log(2)
 }
 
-promiseGenerator('foo')
+function three() {
+    console.log(3)
+}
+
+promiseGenerator('foo').then((val)=>console.log(val))
 
 setTimeout(one, 0)
 
+setImmediate(three)
+
 setTimeout(two, 0)
 
-promiseGenerator('bar')
+promiseGenerator('bar').then((val)=>console.log(val))
