@@ -8,18 +8,14 @@ function promiseGenerator(value) {
     })
 }
 
-function one() {
-    console.log(1)
-}
-
 function two() {
     console.log(2)
 }
 
-async function runFlushPromises(){
+async function runFlushPromises() {
     console.log("start using flushPromises")
 
-    promiseGenerator('foo')
+    promiseGenerator('foo');
 
     setTimeout(two, 0)
 

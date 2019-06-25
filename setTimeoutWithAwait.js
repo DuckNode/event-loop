@@ -7,7 +7,7 @@ function promiseGenerator(value) {
 }
 
 function one() {
-    console.log(1)
+    console.log(1);  
 }
 
 function two() {
@@ -15,7 +15,7 @@ function two() {
 }
 
 async function run(){
-    promiseGenerator('foo')
+    promiseGenerator('foo');
 
     await setTimeout(one, 1000)
 
