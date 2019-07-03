@@ -18,11 +18,17 @@ function runUnblockedPromises(){
     promiseGenerator('two')
 
     //clained promise
-    new Promise((resolve) => {
-        resolve()
-    }).then(() => {
-        console.log('3.5')
+    let stuff = new Promise((resolve) => {
+        console.log("outer promise")
+
+        new Promise(() => {
+            console.log("nested promise")
+        })
+        return "foobar"
+    }).then(val=> {console.log(val)
     })
+
+    console.log(111, stuff)
 
     promiseGenerator('four')
 }
@@ -48,4 +54,4 @@ async function runBlockedPromises(){
 }
 
 runUnblockedPromises() //unordered results because unblocking
-runBlockedPromises() //ordered results because blocking
+// runBlockedPromises() //ordered results because blocking
