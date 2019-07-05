@@ -15,4 +15,37 @@ async function run(){
     Promise.resolve("5").then(console.log);
 }
 
+
+//function then1 () {
+ //   console.log(1);
+//}
+//function then2 () {
+ //   console.log(2);
+//}
+//function then3a () {
+ //   console.log("3a");
+//}
+//function then3b () {
+ //   console.log("3b");
+//}
+//function then3c () {
+ //   console.log("3c");
+//}
+//function then4 () {
+ //   console.log(4);
+//}
+//function then5 () {
+ //   console.log(5);
+//}
+//
+//async function run(){
+ //   Promise.resolve("1").then(then1)
+  //                      .then(then2)
+   //                     .then(then3a)
+    //                    .then(then3b)
+     //                   .then(then3c)
+    //await Promise.resolve("4").then(then4);
+    //Promise.resolve("5").then(then5);
+//}
+
 run()
