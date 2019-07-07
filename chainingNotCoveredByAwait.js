@@ -1,51 +1,41 @@
 'use strict'
 
-//await will not block for promise chains on prior lines of code
+//await will not block for promise chains on preceding lines of code
 
-async function run(){
-    Promise.resolve("1").then((value)=>{console.log(value);return "2"})
-                        .then((value)=>{console.log(value);return "3a"})
-                        .then((value)=>{console.log(value);return "3b"})
-                        .then((value)=>{console.log(value);return "3c"})
-                        .then((value)=>{console.log(value);return "3d"})
-                        .then((value)=>{console.log(value);return "3e"})
-                        .then((value)=>{console.log(value);return "3f"})
-                        .then(console.log);
-    await Promise.resolve("4").then(console.log);
-    Promise.resolve("5").then(console.log);
+function print1 () {
+   console.log(1);
+}
+function print2 () {
+   console.log(2);
+}
+function print3a () {
+   console.log("3a");
+}
+function print3b () {
+   console.log("3b");
+}
+function print3c () {
+   console.log("3c");
+}
+function print3d () {
+   console.log("3d");
+}
+function print4 () {
+   console.log(4);
+}
+function print5 () {
+   console.log(5);
 }
 
-
-//function then1 () {
- //   console.log(1);
-//}
-//function then2 () {
- //   console.log(2);
-//}
-//function then3a () {
- //   console.log("3a");
-//}
-//function then3b () {
- //   console.log("3b");
-//}
-//function then3c () {
- //   console.log("3c");
-//}
-//function then4 () {
- //   console.log(4);
-//}
-//function then5 () {
- //   console.log(5);
-//}
-//
-//async function run(){
- //   Promise.resolve("1").then(then1)
-  //                      .then(then2)
-   //                     .then(then3a)
-    //                    .then(then3b)
-     //                   .then(then3c)
-    //await Promise.resolve("4").then(then4);
-    //Promise.resolve("5").then(then5);
-//}
+async function run(){
+   Promise.resolve().then(print1) //add await on this line of code to make the world a safe place again
+                       .then(print2)
+                       .then(print3a)
+                       .then(print3b)
+                       .then(print3c)
+                       .then(print3d)
+    await Promise.resolve("4").then(print4);
+    Promise.resolve("BOO!!!!!").then(print5);
+}
 
 run()
