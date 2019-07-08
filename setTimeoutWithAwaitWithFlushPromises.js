@@ -2,34 +2,28 @@
 
 const flushPromises = require('flush-promises')
 
-function promiseGenerator(value) {
+function promiseThen(value) {
     Promise.resolve(value).then((value) => {
         console.log(value)
     })
 }
 
-function two() {
-    console.log(2)
+function zeroSetTimeout() {
+    console.log("setTimeout,0")
 }
 
 async function runFlushPromises() {
-    console.log("start using flushPromises")
+    promiseThen('promise.then one');
 
-    promiseGenerator('foo');
+    setTimeout(zeroSetTimeout, 0)
 
-    setTimeout(two, 0)
-
-    promiseGenerator('more')
+    promiseThen('promise.then after setTimeout,0')
 
     await flushPromises();
 
-    promiseGenerator('bar')
+    promiseThen('promise.then after flush')
 
-    await flushPromises();
-
-    console.log("end using flushPromises")
-
-    console.log("--------------------------------------")
+    console.log("plain synchronous line of code after await flushPromises")
 }
 
 runFlushPromises()

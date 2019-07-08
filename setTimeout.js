@@ -1,35 +1,37 @@
 'use strict'
 
-function promiseGenerator(value) {
-    return new Promise((resolve)=>{
-        resolve(value)
-    })
-
-    // let count = 1
-    // for(let i = 0; i < 6000000000; i++)
-    // {
-    //     count = count + i
-    // }
+function first() {
+    console.log("first line of code and first promise.then")
 }
 
-function one() {
-    console.log(1)
+function zeroWait() {
+    console.log("setTimeout,0")
 }
 
-function two() {
-    console.log(2)
+function immediate() {
+    console.log("setImmediate")
 }
 
-function three() {
-    console.log(3)
+function waitSecond() {
+    console.log("setTimeout,1000")
 }
 
-promiseGenerator('foo').then((val)=>console.log(val))
+function last() {
+    console.log("promise.then at the end of the universe")
+}
 
-setTimeout(one, 0)
+function run() {
+    Promise.resolve().then(first)
 
-setImmediate(three)
+    setTimeout(zeroWait, 0)
 
-setTimeout(two, 0)
+    setImmediate(immediate)
 
-promiseGenerator('bar').then((val)=>console.log(val))
+    setTimeout(zeroWait, 0)
+
+    setTimeout(waitSecond, 1000)
+
+    Promise.resolve().then(last)
+}
+
+run()

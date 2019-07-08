@@ -1,42 +1,28 @@
 'use strict'
 
-function promiseGenerator(value) {
-    Promise.resolve(value).then((value) => {
+function promiseThen(value) {
+    return Promise.resolve(value).then((value) => {
         console.log(value)
     })
 }
 
-function one() {
-    console.log(1)
+function zeroTimer() {
+    console.log("zeroTimer")
 }
 
-function two() {
-    console.log(2)
+function moreFoo() {
+    console.log("foo")
 }
 
-async function runHomebrewFlush(){
+async function runHomebrewFlush() {
 
-    console.log("start using homebrew flush")
+    promiseThen('foo').then(moreFoo).then(moreFoo).then(moreFoo).then(moreFoo).then(moreFoo)
 
-    promiseGenerator('hey')
+    setTimeout(zeroTimer, 0)
 
-    setTimeout(two, 0)
+    await new Promise(resolve => setImmediate(resolve))
 
-    promiseGenerator('middle')
-
-    //with New promise
-    await new Promise(function(resolve) {
-        setImmediate(resolve);
-    });
-
-    promiseGenerator('ho')
-    
-    //with New promise
-    await new Promise(function(resolve) {
-        setImmediate(resolve);
-    });
-
-    console.log("end using homebrew flush")
+    promiseThen('bar')
 }
 
 runHomebrewFlush()

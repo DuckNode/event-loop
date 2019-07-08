@@ -17,7 +17,7 @@ function two() {
 async function run(){
     promiseGenerator('foo');
 
-    await setTimeout(one, 1000)
+    await setTimeout(one, 1000) //does nothing
 
     setTimeout(two, 0)
 
